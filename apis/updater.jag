@@ -1,0 +1,17 @@
+<%
+
+require('/modules/publisher.js').exec(function(ctx) {
+    var rxt = require('rxt');
+    var assetMod = rxt.asset;
+
+    var id = ctx.request.getParameter('id');
+    var type = ctx.request.getParameter('type');
+    type='site';
+    var am = assetMod.createUserAssetManager(ctx.session, type);
+    var asset = am.get(id);
+    asset.attributes.overview_description='This is a test';
+    am.update(asset);
+    //print(aame = am.getName(asset);
+    //print('Hello world!');
+}, request, response, session);
+%>

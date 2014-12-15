@@ -1,0 +1,34 @@
+<%
+    var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
+    var process = require('process');
+    var httpsPort = process.getProperty('https.port');
+    var msg = 'Authorized Successfully !';
+    print('<h2>' + msg + '</h2>');
+
+    var log = new Log();
+
+    var twitter = session.get("oauth_service");
+    var consumerKey = session.get('consumerKey');
+    var consumerSecret = session.get('consumerSecret');
+
+    var verifier = request.getParameter('oauth_verifier');
+    var auth_token = twitter.getAccessToken(verifier);
+    var assetId = session.get('assetId');
+
+    var user = auth_token.rawResponse.split("=").pop();
+
+    var path ='connections/' + session.get('ConnectionType') + '/accounts';
+
+
+    var authInfo = stringify({"consumerKey" : consumerKey, "consumerSecret" : consumerSecret , "accessToken" : auth_token.token, "accessTokenSecret" : auth_token.secret});
+    regUtilMod.insertNewAccount(path,user, authInfo);
+
+    var connectionBoxId = session.get('connectionBoxId');
+
+    // finally redirect back to the details page once you are done.
+    response.sendRedirect('https://localhost:'+httpsPort+'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+
+    // var twitterresponse = twitter.sendOAuthRequest(auth_token, "GET", "https://api.twitter.com/1.1/account/verify_credentials.json");
+    // print(twitterresponse.retweet_count);
+    // print(twitterresponse.toString());
+%>

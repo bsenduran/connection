@@ -1,0 +1,31 @@
+<%
+    var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
+    var process = require('process');
+    var httpsPort = process.getProperty('https.port');
+
+
+    if (request.getMethod() == "POST") {
+            var log = new Log();
+            log.info('Coming to the delete ************************************************************************');
+            // Get the account id to be deleted.
+            var accountId = request.getParameter('accountId');
+            var assetId = request.getParameter("id");
+
+        var returnRecipeUri = request.getParameter("recipeUri");
+        var connectionBoxId = returnRecipeUri.split("=")[1];
+
+        log.info(">>"+ accountId);
+
+            var path ='connections/' + session.get('ConnectionType') + '/accounts';
+
+            log.info(path);
+
+           // Then delete it from the registry.
+            regUtilMod.deleteAccount(path, accountId);
+
+            print('Account was deleted successfully !');
+
+            response.sendRedirect('https://localhost:'+httpsPort+'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+    }
+
+%>
