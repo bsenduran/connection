@@ -33,8 +33,8 @@ require('/modules/publisher.js').exec(function(ctx) {
 
         var url = 'https://localhost:'+httpsPort+'/admin/services/';
         var server = new carbon.server.Server(url);
-        var options = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
-        var dataStore = new carbon.registry.Registry(server, options);
+        var regOptions = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
+        var dataStore = new carbon.registry.Registry(server, regOptions);
 
         // Get existing connections
         var path = "/_system/governance/connections/" + name + "/accounts";
