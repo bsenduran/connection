@@ -8,5 +8,5 @@
 
         session.put('assetId', assetId);
         session.put('connectionBoxId', connectionBoxId);
-        response.sendRedirect('https://localhost:'+httpsPort+'/publisher/asts/connection/jiraLoginSuccess');
+        response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/basic_success');
 %>

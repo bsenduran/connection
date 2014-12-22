@@ -102,11 +102,11 @@ body {
 </html>
 
 <%
-// if it's post request to add a employee
+// if it's post request to add a user
 if(request.getMethod() == "POST"){
-    var log = new Log();
-	var process = require('process');
-	var httpsPort = process.getProperty('https.port');
+    //var log = new Log();
+    var process = require('process');
+    var httpsPort = process.getProperty('https.port');
     log.info('Login Button Clicked !');
     var userName = request.getParameter("username");
     var password = request.getParameter("password");
@@ -118,13 +118,12 @@ if(request.getMethod() == "POST"){
 
     var authInfo = stringify({"username" : userName, "password" : password, "uri" : jiraUrl });
 
-    regUtilMod.insertNewAccount(path,userName + '@' + jiraUrl, authInfo);
-
+    regUtilMod.insertNewAccount(path, userName + '@' + jiraUrl, authInfo);
 
     var assetId = session.get('assetId');
     var connectionBoxId = session.get('connectionBoxId');
 
-    response.sendRedirect('https://localhost:'+httpsPort+'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+    response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
 
 }
 

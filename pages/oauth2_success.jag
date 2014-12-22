@@ -1,0 +1,30 @@
+<%
+var connectionName = session.get('connectionName')
+var OAuthUtil = require('/extensions/assets/connection/modules/' + connectionName + '_oauth2.js').api;
+var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
+var process = require('process');
+var httpsPort = process.getProperty('https.port');
+
+log.info('Authorized Successfully !');
+
+/* OAuth2 Authorizing phase completed */
+
+// Get the Access Token
+var OauthResult = OAuthUtil.getAccessTokenResults();
+
+// Expected Result : {"id" : "gmail@email.com", "data" : {"oauthConsumerKey" : "21297", "oauthConsumerSecret" : "PY9hKl", "oauthAccessToken" : "ya29FA", "oauthAccessTokenSecret" : "FvDeEBdbe5A"}}
+log.info('Resulting : ' + stringify(OauthResult));
+
+log.info('Authenticate Completed !');
+
+/* OAuth2 Authenticating phase completed */
+
+// Saving the necessary information in the registry
+var path ='connections/' + connectionName + '/accounts';
+regUtilMod.insertNewAccount(path, OauthResult.id, stringify(OauthResult.data));
+
+var assetId = session.get('assetId');
+var connectionBoxId = session.get('connectionBoxId');
+
+response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
+%>

@@ -1,0 +1,28 @@
+<%
+var connectionName = request.getParameter("connectionName");
+
+var OAuthUtil = require('/extensions/assets/connection/modules/' + connectionName + '_oauth2.js').api;
+
+if (request.getMethod() == "POST") {
+    var oauth = require("oauth");
+    var oauthService = new oauth.OAuthProvider(OAuthUtil.getProviderConfig());
+
+    // Id of the connection
+    var assetId = request.getParameter("id");
+    // Recipe which calls establishing a connection
+    var returnRecipeUri = request.getParameter("recipeUri");
+    // Id of the connection_box resides in details recipe page
+    var connectionBoxId = returnRecipeUri.split("=")[1];
+
+    // Store special values to take at the success page
+    session.put('assetId', assetId);
+    session.put('connectionBoxId', connectionBoxId);
+    session.put('connectionName', connectionName);
+
+    log.info('Starting Generic OAuth2');
+
+    // User redirects to authorizing url
+    var authUrl = oauthService.getAuthorizationUrl();
+    response.sendRedirect(authUrl);
+}
+%>

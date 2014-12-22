@@ -6,64 +6,41 @@ asset.server = function (ctx) {
         endpoints: {
             apis: [
                 {
-                    url: 'twitterOAuth',
-                    path: 'twitterOAuth.jag'
-                },
-                {
-                    url: 'googlespreadsheetOAuth',
-                    path: 'googlespreadsheetOAuth.jag'
-                },
-                {
-                    url: 'gmailOAuth',
-                    path: 'gmailOAuth.jag'
-                },
-                {
-                    url: 'salesforceOAuth',
-                    path: 'salesforceOAuth.jag'
-                },
-                {
-                    url: 'jiraOAuth',
-                    path: 'jiraOAuth.jag'
-                },
-                {
                     url: 'deleteAccount',
                     path: 'deleteAccount.jag'
                 },
                 {
                     url: 'updater',
                     path: 'updater.jag'
+                },
+                {
+                    url: 'oauth1',
+                    path: 'oauth1.jag'
+                },
+                {
+                    url: 'oauth2',
+                    path: 'oauth2.jag'
+                },
+                {
+                    url: 'basic',
+                    path: 'basic.jag'
                 }
             ],
             pages: [
                 {
-                    title: 'Success ' + type,
-                    url: 'success',
-                    path: 'success.jag'
+                    title: 'oauth1_success',
+                    url: 'oauth1_success',
+                    path: 'oauth1_success.jag'
                 },
                 {
-                    title: 'Google Success' + type,
-                    url: 'googleSuccess',
-                    path: 'googleSuccess.jag'
+                    title: 'oauth2_success',
+                    url: 'oauth2_success',
+                    path: 'oauth2_success.jag'
                 },
                 {
-                    title: 'gMail Success' + type,
-                    url: 'googleMailSuccess',
-                    path: 'googleMailSuccess.jag'
-                },
-                {
-                    title: 'salesforce Success' + type,
-                    url: 'salesforceSuccess',
-                    path: 'salesforceSuccess.jag'
-                },
-                {
-                    title: 'jira Success' + type,
-                    url: 'jiraSuccess',
-                    path: 'jiraSuccess.jag'
-                },
-                {
-                    title: 'jiraLoginSuccess',
-                    url: 'jiraLoginSuccess',
-                    path: 'jiraLoginSuccess.jag'
+                    title: 'basic_success',
+                    url: 'basic_success',
+                    path: 'basic_success.jag'
                 }
             ]
         }

@@ -6,22 +6,20 @@ var api = {};
 (function () {
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+
+    // Access registry
     var carbon = require('carbon');
-    var url = 'https://localhost:'+httpsPort+'/admin/carbon/';
+
+    var url = 'https://localhost:9443/admin/services/';
     var server = new carbon.server.Server(url);
-    var options = {
-        username: 'admin',
-        domain: 'carbon.super',
-        tenantId: -1234
-    };
-    var registry = new carbon.registry.Registry(server, options);
-    var dataStore = new MetadataStore("admin", "admin");
+    var options = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
+    var dataStore = new carbon.registry.Registry(server, options);
 
     var getAccountsContent = function (path) {
         // log.info(path);
         var res;
         // We assume that at least an empty Account file exists in the registry at this point.
-        res = dataStore.get(path);
+        res = dataStore.get('/_system/governance/' + path);
         return res.content;
     };
 
@@ -29,19 +27,19 @@ var api = {};
         var log = new Log();
         var accountContent = getAccountsContent(path);
 
-        var acctContentJSON = parse(accountContent);
+        var acctContentJSON = parse(stringify(accountContent));
 
         // If there's no any user account with the given name then create one.
         if (!acctContentJSON.hasOwnProperty(newAcct)) {
             // Setting the JSON contents here.
             acctContentJSON[newAcct] = parse(newAuthInfo);
 
-            var res = dataStore.get(path);
+            var res = dataStore.get('/_system/governance/' + path);
             // Setting the registry resource here.
             res.content = stringify(acctContentJSON);
 
             // updating the registry with the new resource here.
-            dataStore.put(path, res);
+            dataStore.put('/_system/governance/' + path, res);
         }
     };
 
@@ -52,12 +50,12 @@ var api = {};
         delete accountContent[acct];
 
         // Get the registry and update the content.
-        var res = dataStore.get(path);
+        var res = dataStore.get('/_system/governance/' + path);
 
         // setting the registry resource content here.
         res.content = stringify(accountContent);
 
         // updating the registry with the new resource here.
-        dataStore.put(path, res);
+        dataStore.put('/_system/governance/' + path, res);
     };
 }());

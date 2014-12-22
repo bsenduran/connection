@@ -8,7 +8,7 @@
         <h3 class="h-left-nav-title">Asset Overview</h3>
             <div class="hr-sep-2">&nbsp;</div>
         <div class="ctrl-connector">
-              <img src='{{url ""}}/storage/{{../rxt.shortName}}/{{id}}/{{thumbnail}}' class="" alt="Thumb"/>
+              <img src='{{tables.0.fields.thumbnail.value}}' class="" alt="Thumb"/>
         </div><br class="c-both" />
         <h4>{{tables.0.fields.displayname.value}}</h4>
 
@@ -65,7 +65,7 @@
 
                 <div class="clearfix" style="height:30px;"></div>
 
-                <form action="{{url ""}}/asts/{{type}}/apis/{{name}}OAuth?type=connection&id={{id}}&recipeUri={{returnRecipeUri}}"   method="post" role="form">
+                <form action="{{url ""}}/asts/connection/apis/{{tables.0.fields.authenticationType.value}}?type=connection&id={{id}}&recipeUri={{returnRecipeUri}}&connectionName={{tables.0.fields.name.value}}"   method="post" role="form">
                     <button type="submit" class="btn-action">OAuth Connection</button>
                 </form>
 
