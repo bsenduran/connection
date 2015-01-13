@@ -44,7 +44,7 @@ var api = {};
     };
 
     api.deleteAccount = function (path, acct) {
-        var accountContent = parse(getAccountsContent(path));
+        var accountContent = parse(stringify(getAccountsContent(path)));
 
         // delete the relevant entry from the JSON object.
         delete accountContent[acct];
