@@ -9,7 +9,7 @@ require('/modules/publisher.js').exec(function(ctx) {
     var uriMatcher = new URIMatcher(ctx.request.getRequestURI());
     var options = uriMatcher.match('/{context}/asts/{type}/{pageName}/{+id}')||uriMatcher.match('/{context}/asts/{type}/{pageName}');
 
-    var log = new Log();
+    var log = new Log("details.jag");
     
     if(!options){
         response.sendError(400,'Could not locate an endpoint for your request.Make sure that you provide an id');

@@ -1,9 +1,11 @@
 <%
-var connectionName = session.get('connectionName')
+var connectionName = session.get('connectionName');
 var OAuthUtil = require('/extensions/assets/connection/modules/' + connectionName + '_oauth1.js').api;
 var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
 var process = require('process');
 var httpsPort = process.getProperty('https.port');
+
+var log = new Log("oauth1_success");
 
 log.info('Authorized Successfully !');
 

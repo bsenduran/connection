@@ -6,20 +6,23 @@ var api = {};
 (function () {
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+    var log = new Log("registry_util");
 
     // Access registry
     var carbon = require('carbon');
 
-    var url = 'https://localhost:9443/admin/services/';
+    var url = 'https://localhost:'+httpsPort+'/admin/services/';
     var server = new carbon.server.Server(url);
     var options = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
     var dataStore = new carbon.registry.Registry(server, options);
 
     var getAccountsContent = function (path) {
-        // log.info(path);
+        log.info("path is "+ path);
         var res;
         // We assume that at least an empty Account file exists in the registry at this point.
         res = dataStore.get('/_system/governance/' + path);
+
+        log.info("res "+ res);
         return res.content;
     };
 
