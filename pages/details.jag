@@ -45,11 +45,14 @@ require('/modules/publisher.js').exec(function(ctx) {
         if("connection" == type){
             try {
                 res = dataStore.get(path);
-                accountContent = parse(res.content+'');
+                accountContent = JSON.parse(res.content);
             } catch (error){
-                log.error(error);
+                //log.error(error);
                 log.info('Adding new accounts file');
-                var resource = {content:'{}'};
+                var resource = {
+                    content:'{}',
+                    mediaType: 'application/json'
+                };
                 dataStore.put(path, resource);
                 accountContent={};
             }
