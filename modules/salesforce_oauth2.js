@@ -8,7 +8,7 @@ var api = {};
         "access_token_url": "https://login.salesforce.com/services/oauth2/token",
         "api_key": "3MVG9Y6d_Btp4xp5NS5XjHs9kGfHkRbkqHl3FYAvCnc86tjATSdAEFxEeXj_yV4nNuX43VOeFIH9DQjxu2n62",
         "api_secret": "2324074892980891031",
-        "callback_url": "https://localhost:" + httpsPort + "/publisher/asts/connection/salesforceSuccess?name=salesforce&type=oauth&version=2",
+        "callback_url": "https://localhost:" + httpsPort + "/publisher/asts/connection/oauth2_success?name=salesforce&type=oauth&version=2",
         "response_type": "code"
     };
 
@@ -63,7 +63,9 @@ var api = {};
 
         log.info(username);
 
-        var authInfo = {"oauthConsumerKey" : clientId, "oauthConsumerSecret" : clientSecret , "oauthAccessToken" : result.data.access_token, "oauthRefreshToken" : result.data.refresh_token, "instanceUrl" : result.data.instance_url};
+        var authInfo = {"id" : username, "data":{"oauthConsumerKey" : clientId, "oauthConsumerSecret" : clientSecret , "oauthAccessToken" : result.data.access_token, "oauthRefreshToken" : result.data.refresh_token, "instanceUrl" : result.data.instance_url}};
+
+
 
         return authInfo;
     }
