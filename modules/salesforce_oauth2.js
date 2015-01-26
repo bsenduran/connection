@@ -66,7 +66,6 @@ var api = {};
         var authInfo = {"id" : username, "data":{"oauthConsumerKey" : clientId, "oauthConsumerSecret" : clientSecret , "oauthAccessToken" : result.data.access_token, "oauthRefreshToken" : result.data.refresh_token, "instanceUrl" : result.data.instance_url}};
 
 
-
         return authInfo;
     }
 }());
