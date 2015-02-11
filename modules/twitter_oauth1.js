@@ -2,6 +2,8 @@ var api = {};
 (function () {
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+    var serverHost = "https://" + process.getProperty('server.host');
+
     var provider = {
         "oauth_version": "1",
         "authorization_url": "https://twitter.com/oauth/authorize",
@@ -9,7 +11,7 @@ var api = {};
         "request_token_url": "https://twitter.com/oauth/request_token",
         "api_key": "V7gCu0rSpzUOlZXNrsaPki4cp",
         "api_secret": "dM2Rzr2LaFzfV4bdW6dQJ2WQernT9E7xHf8hwJ7BUwwRV4NgBV",
-        "callback_url" : 'https://localhost:' + httpsPort + '/publisher/asts/connection/oauth1_success'
+        "callback_url" : serverHost  + ':' + httpsPort + '/publisher/asts/connection/oauth1_success'
     };
 
     api.getProviderConfig = function () {

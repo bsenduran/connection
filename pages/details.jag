@@ -3,7 +3,6 @@ var caramel;
 require('/modules/publisher.js').exec(function(ctx) {
     caramel = require('caramel');
     var process = require('process');
-    var httpsPort = process.getProperty('https.port');
     var ui = require('rxt').ui;
     var asset = require('rxt').asset;
     var uriMatcher = new URIMatcher(ctx.request.getRequestURI());
@@ -31,8 +30,7 @@ require('/modules/publisher.js').exec(function(ctx) {
         // Access registry
         var carbon = require('carbon');
 
-        var url = 'https://localhost:'+httpsPort+'/admin/services/';
-        var server = new carbon.server.Server(url);
+        var server = new carbon.server.Server();
         var regOptions = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
         var dataStore = new carbon.registry.Registry(server, regOptions);
 

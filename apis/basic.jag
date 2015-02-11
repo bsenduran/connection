@@ -2,11 +2,11 @@
         var assetId = request.getParameter("id");
         var process = require('process');
         var httpsPort = process.getProperty('https.port');
+	var serverHost = "https://" + process.getProperty('server.host');
         var returnRecipeUri = request.getParameter("recipeUri");
         var connectionBoxId = returnRecipeUri.split("=")[1];
 
-
         session.put('assetId', assetId);
         session.put('connectionBoxId', connectionBoxId);
-        response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/basic_success');
+        response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/asts/connection/basic_success');
 %>

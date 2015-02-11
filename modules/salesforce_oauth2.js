@@ -2,13 +2,15 @@ var api = {};
 (function () {
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+    var serverHost = "https://" + process.getProperty('server.host');
+
     var provider = {
         "oauth_version": "2",
         "authorization_url": "https://login.salesforce.com/services/oauth2/authorize",
         "access_token_url": "https://login.salesforce.com/services/oauth2/token",
         "api_key": "3MVG9Y6d_Btp4xp5NS5XjHs9kGfHkRbkqHl3FYAvCnc86tjATSdAEFxEeXj_yV4nNuX43VOeFIH9DQjxu2n62",
         "api_secret": "2324074892980891031",
-        "callback_url": "https://localhost:" + httpsPort + "/publisher/asts/connection/oauth2_success?name=salesforce&type=oauth&version=2",
+        "callback_url": serverHost  + ':' + httpsPort + "/publisher/asts/connection/oauth2_success?name=salesforce&type=oauth&version=2",
         "response_type": "code"
     };
 

@@ -107,6 +107,7 @@ if(request.getMethod() == "POST"){
     //var log = new Log();
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+    var serverHost = "https://" + process.getProperty('server.host');
     log.info('Login Button Clicked !');
     var userName = request.getParameter("username");
     var password = request.getParameter("password");
@@ -123,7 +124,7 @@ if(request.getMethod() == "POST"){
     var assetId = session.get('assetId');
     var connectionBoxId = session.get('connectionBoxId');
 
-    response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
+    response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
 
 }
 

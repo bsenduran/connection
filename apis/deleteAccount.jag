@@ -2,6 +2,7 @@
     var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
+    var serverHost = "https://" + process.getProperty('server.host');
 
 
     if (request.getMethod() == "POST") {
@@ -25,7 +26,7 @@
 
             print('Account was deleted successfully !');
 
-            response.sendRedirect('https://localhost:'+httpsPort+'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+            response.sendRedirect(serverHost  + ':' + httpsPort +'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
     }
 
 %>

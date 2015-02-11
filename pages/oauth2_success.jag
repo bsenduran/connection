@@ -4,6 +4,7 @@ var OAuthUtil = require('/extensions/assets/connection/modules/' + connectionNam
 var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
 var process = require('process');
 var httpsPort = process.getProperty('https.port');
+var serverHost = "https://" + process.getProperty('server.host');
 
 var log = new Log("oauth2_success");
 
@@ -28,5 +29,5 @@ regUtilMod.insertNewAccount(path, OauthResult.id, stringify(OauthResult.data));
 var assetId = session.get('assetId');
 var connectionBoxId = session.get('connectionBoxId');
 
-response.sendRedirect('https://localhost:' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
+response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
 %>

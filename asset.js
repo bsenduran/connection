@@ -10,10 +10,6 @@ asset.server = function (ctx) {
                     path: 'deleteAccount.jag'
                 },
                 {
-                    url: 'updater',
-                    path: 'updater.jag'
-                },
-                {
                     url: 'oauth1',
                     path: 'oauth1.jag'
                 },
