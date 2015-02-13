@@ -25,13 +25,11 @@ require('/modules/publisher.js').exec(function(ctx) {
         // Store the current connection type in a session.
         session.put('ConnectionType' ,name);
 
-
-        // Access registry
         // Access registry
         var carbon = require('carbon');
 
         var server = new carbon.server.Server();
-        var regOptions = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
+        var regOptions = {username: user.username,  domain: user.tenantDomain , tenantId: user.tenantId};
         var dataStore = new carbon.registry.Registry(server, regOptions);
 
         // Get existing connections

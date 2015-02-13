@@ -4,7 +4,8 @@ var api = {};
 
     var carbon = require('carbon');
     var server = new carbon.server.Server();
-    var options = {system: true,  domain: carbon.server.tenantDomain() , tenantId: carbon.server.tenantId()};
+    var options = {username: user.username,  domain: user.tenantDomain , tenantId: user.tenantId};
+
     var dataStore = new carbon.registry.Registry(server, options);
 
     api.insertNewAccount = function (path, newAcct, newAuthInfo) {
