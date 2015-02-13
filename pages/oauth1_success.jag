@@ -1,4 +1,5 @@
 <%
+require('/modules/publisher.js').exec(function(ctx){
 var connectionName = session.get('connectionName');
 var OAuthUtil = require('/extensions/assets/connection/modules/' + connectionName + '_oauth1.js').api;
 var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
@@ -30,4 +31,5 @@ var assetId = session.get('assetId');
 var connectionBoxId = session.get('connectionBoxId');
 
 response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
+}, request, response, session);
 %>

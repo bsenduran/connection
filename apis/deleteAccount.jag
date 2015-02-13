@@ -1,4 +1,5 @@
 <%
+require('/modules/publisher.js').exec(function(ctx){
     var regUtilMod = require('/extensions/assets/connection/modules/registryUtil.js').api;
     var process = require('process');
     var httpsPort = process.getProperty('https.port');
@@ -28,5 +29,5 @@
 
             response.sendRedirect(serverHost  + ':' + httpsPort +'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
     }
-
+}, request, response, session);
 %>
