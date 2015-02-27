@@ -10,7 +10,7 @@ var api = {};
         "access_token_url": "https://accounts.google.com/o/oauth2/token",
         "api_key": "212972391932-3thmh0maoodoin7t116vb0adpjjvckv0.apps.googleusercontent.com",
         "api_secret": "PY9hUuKKwxj_D92LbawosUKl",
-        "callback_url": serverHost  + ':' + httpsPort + "/publisher/asts/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
+        "callback_url": serverHost + "/publisher/asts/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
         "authorize_params": {
             "state": "wso2recipetrial",
             "scope": "https://www.googleapis.com/auth/drive.readonly https://spreadsheets.google.com/feeds/",

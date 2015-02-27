@@ -27,7 +27,7 @@
     var connectionBoxId = session.get('connectionBoxId');
 
     // finally redirect back to the details page once you are done.
-    response.sendRedirect(serverHost  + ':' + httpsPort +'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+    response.sendRedirect(serverHost  +'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
 
     // var twitterresponse = twitter.sendOAuthRequest(auth_token, "GET", "https://api.twitter.com/1.1/account/verify_credentials.json");
     // print(twitterresponse.retweet_count);
