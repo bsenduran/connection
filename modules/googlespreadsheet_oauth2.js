@@ -62,6 +62,8 @@ var api = {};
 
         log.info(result);
 
+        if (result.data.error) return;
+
         var getResult = get("https://www.googleapis.com/drive/v2/about", '', {"Authorization" : "Bearer " + result.data.access_token}, "json");
 
         log.info('User Info : ' + stringify(getResult.data));

@@ -60,6 +60,8 @@ var api = {};
 
         log.info('Access Token : ' + stringify(result.data));
 
+        if (result.data.error) return;
+
         // In this case, its needed to take user's email separately to uniquely identify the user
         var getResult = get("https://www.googleapis.com/userinfo/email?alt=json&access_token=" + result.data.access_token,'','json');
 
