@@ -24,8 +24,8 @@ log.info('Authenticate Completed !');
 /* OAuth2 Authenticating phase completed */
 
 // If no error returned during OAuth flow
-if (!OauthResult)
-{
+if (OauthResult != null) {
+    log.info("saving oauth details");
     // Saving the necessary information in the registry
     var path ='connections/' + connectionName + '/accounts';
     regUtilMod.insertNewAccount(path, OauthResult.id, stringify(OauthResult.data));
