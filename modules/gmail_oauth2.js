@@ -68,7 +68,7 @@ var api = {};
         log.info('User Info : ' + stringify(getResult.data));
 
         var emailAddress = getResult.data.data.email;
-        var authInfo = {"id" : emailAddress, "data":{"username" : emailAddress, "oauthConsumerKey" : clientId, "oauthConsumerSecret" : clientSecret , "oauthAccessToken" : result.data.access_token, "oauthAccessTokenSecret" : result.data.refresh_token}};
+        var authInfo = {"id" : emailAddress, "data":{"username" : emailAddress, "oauthConsumerKey" : clientId, "oauthConsumerSecret" : clientSecret , "oauthAccessToken" : result.data.access_token, "oauthRefreshToken" : result.data.refresh_token}};
 
         return authInfo;
     }
