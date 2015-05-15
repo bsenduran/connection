@@ -138,7 +138,7 @@ h3, h4, h2 {
     border-radius:6px;
     background:#fff;
     width:230px;
-    padding:5px 17px 20px 17px;
+    padding:27px 17px 20px 17px;
     text-align: left;
 }
 
@@ -191,7 +191,7 @@ h3, h4, h2 {
 }
 
 .ctrl-connector img {
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 h2.asset-overview {
@@ -1804,10 +1804,11 @@ circle:hover {
 }
 
 .wr-ipaas .wr-ip-left h1 {
-    font-size:22px;
-    font-weight:500;
-    margin:0;
-    letter-spacing: -1px;
+	font-weight: 500;
+    font-size: 19px;
+    margin: 0;
+    color: #333;
+    text-transform: uppercase;
 }
 
 .wr-ipaas .wr-ip-left .brand span {
@@ -1895,13 +1896,16 @@ p {
 
 .wr-left {
     float:left;
-    width:270px;
+    width:250px;
 }
 
 .wr-right {
     float:right;
-    width:660px;
-    border:0px solid #ff0000;
+    width:740px;
+    border:1px solid #dedede;
+	background:#fff;
+	border-radius:5px;
+	padding:25px 15px 15px 25px;
 }
 
 
@@ -1994,7 +1998,7 @@ p {
 .btn-action {
     display: inline-block;
     background: #5fb548;
-    border-radius: 8px;
+    border-radius: 4px;
     color: #ffffff;
     font-weight: 500;
     font-style: bold;
@@ -2123,7 +2127,7 @@ p {
 .btn-recipe-store {
     display: inline-block;
     background: #f57b20;
-    border-radius: 50px;
+    border-radius: 4px;
     color: #ffffff;
     font-weight: 400;
 
@@ -2283,6 +2287,8 @@ input.input-set-connection {
     border:0px solid #fff !important;
     background:#fff !important;
     box-shadow: inset 0px 0px 0px rgba(0,0,0,0.9);
+	font-size:16px !important;
+	padding-top:10px;	
 }
 
 .ctrl-paging {
@@ -2362,7 +2368,7 @@ input.input-set-connection {
 a.btn-select-connection {
     display: inline-block;
     background: #08c;
-    border-radius: 7px;
+    border-radius: 4px;
     color: #ffffff;
     font-weight: 400;
     font-size: 13px;
@@ -2443,7 +2449,7 @@ a.btn-select-connection:hover {
 .btn-delete {
     display: inline-block;
     background: #aaa;
-    border-radius: 7px;
+    border-radius: 4px;
     color: #ffffff;
     font-weight: 400;
     font-size: 13px;
