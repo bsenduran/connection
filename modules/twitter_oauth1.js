@@ -45,15 +45,23 @@ var api = {};
         var auth_token = twitter.getAccessToken(verifier);
 
         // Get user info -- specific to Twitter
-        var user = auth_token.rawResponse.split("=").pop();
-        log.info('User Info : ' + stringify(user));
-
         var clientId = provider.api_key;
         var clientSecret = provider.api_secret;
 
-        var screenName = user;
+        var screenName = getScreenName(auth_token.rawResponse);
+        log.info('User Info : ' + stringify(screenName));
         var authInfo = {"id" : screenName, "data":{"consumerKey" : clientId, "consumerSecret" : clientSecret, "accessToken" : auth_token.token, "accessTokenSecret" : auth_token.secret}};
 
         return authInfo;
+    }
+
+    var getScreenName = function (rawResponse) {
+        var tokens = rawResponse.split('&');
+        for (ctr=0; ctr<tokens.length; ctr++) {
+            if (tokens[ctr].indexOf("screen_name") > -1) {
+                return tokens[ctr].split("=")[1];
+            }
+        }
+        return false;
     }
 }());
