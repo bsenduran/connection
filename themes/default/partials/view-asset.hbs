@@ -1,17 +1,16 @@
 {{#with assets}}
 
-<!-- left column -->
-<div class="wr-left asset-summary">
+<!-- left column - connection summary -->
+<div class="col-sm-4">
 
     <!-- left nav -->
-    <div class="wr-left-nav">
+    <div class="col-sm-8 center-block  well">
         <h3 class="h-left-nav-title">Asset Overview</h3>
-            <div class="hr-sep-2">&nbsp;</div>
         <div class="ctrl-connector">
               <img src='{{tables.0.fields.thumbnail.value}}' class="" alt="Thumb"/>
         </div><br class="c-both" />
-        <h4>{{tables.0.fields.displayname.value}}</h4>
 
+        <h4>{{tables.0.fields.displayname.value}}</h4>
 
         <p class="t-asset-ver">{{tables.0.fields.version.value}}</p>
         <p>{{tables.0.fields.description.value}}</p>
@@ -23,65 +22,76 @@
 <!-- /left column -->
 
 <!-- right column -->
-<div class="wr-right">
+<div class="col-sm-6">
 
-<h3>Set Connection</h3>
+    <h3>Manage Connection</h3>
 
 
     <div class='content-div'>
-        <div class="tab-content asset-tab-content">
-            <div id="view" class="asset-view-container">
+        <div class="clearfix" style="height:30px;"></div>
 
-                        {{#if existingConnections}}
-                            <h4 class="h-asset-title">Existing connections</h4>
-                            {{#each existingConnections}}
-                                <div class="ctrl-conns">
-                                    <div class="conns-1">
-                                        {{#recipeUriIdNullCheck ../returnRecipeUri}}
-                                            <a href="{{../../returnRecipeUri}}&value={{this}}"
-                                               class="btn-select-connection">Select</a>
-                                            <a href="{{../../returnRecipeUri}}&value={{this}}">
-                                                {{this}}
-                                            </a>
-                                        {{else}}
-                                            {{this}}
-                                        {{/recipeUriIdNullCheck}}
-                                    </div>
-                                    <div class="conns-2">
-                                        <form action="{{url ""}}/asts/{{../type}}/apis/deleteAccount?type=connection&accountId={{this}}&id={{../id}}&recipeUri={{../../returnRecipeUri}}"
-                                              id="form-delete" method="post" role="form">
-                                            <button class="btn-delete">Delete</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="hr-sep-4"></div>
-                                <br class="c-both"/>
-                            {{/each}}
+        {{#if existingConnections}}
+            <h4 class="h-asset-title">Existing connections</h4>
 
-                        {{/if}}
+            <div class="clearfix" style="height:20px;"></div>
 
+            <div class="list-group">
 
+            {{#each existingConnections}}
 
+                {{#recipeUriIdNullCheck ../returnRecipeUri}}
+                <!-- When coming from integration creation -->
+                <a href="{{../../returnRecipeUri}}&value={{this}}" class="list-group-item">
+                    <h4 class="list-group-item-heading col-sm-10">
+                        {{this}}
+                    </h4>
 
-                <div class="clearfix" style="height:30px;"></div>
+                    <form action="{{url ""}}/asts/{{../type}}/apis/deleteAccount?type=connection&accountId={{this}}&id={{../id}}&recipeUri={{../../returnRecipeUri}}"
+                          id="form-delete" method="post" role="form">
+                        <button class="btn btn-danger">
+                            <span class="badge">X</span> Delete
+                        </button>
+                    </form>
+                </a>
 
-                <form action="{{url ""}}/asts/connection/apis/{{tables.0.fields.authenticationType.value}}?type=connection&id={{id}}&recipeUri={{returnRecipeUri}}&connectionName={{tables.0.fields.name.value}}"   method="post" role="form">
-                    <button type="submit" class="btn-action"> + New Connection</button>
-                </form>
+                {{else}}
+                <!-- When coming from dashboard -->
+                <a class="list-group-item">
+                    <h4 class="list-group-item-heading col-sm-10">
+                        {{this}}
+                    </h4>
 
+                    <form action="{{url ""}}/asts/{{../type}}/apis/deleteAccount?type=connection&accountId={{this}}&id={{../id}}&recipeUri={{../../returnRecipeUri}}"
+                          id="form-delete" method="post" role="form">
+                        <button class="btn btn-danger">
+                            <span class="badge">X</span> Delete
+                        </button>
+                    </form>
+                </a>
+
+                {{/recipeUriIdNullCheck}}
+
+            {{/each}}
 
             </div>
-        </div>
+
+        {{/if}}
+
+
+
+        <div class="clearfix" style="height:30px;"></div>
+
+        <form action="{{url ""}}/asts/connection/apis/{{tables.0.fields.authenticationType.value}}?type=connection&id={{id}}&recipeUri={{returnRecipeUri}}&connectionName={{tables.0.fields.name.value}}"   method="post" role="form">
+            <button type="submit" class="btn btn-success btn-lg">
+                <span class="badge">+</span> New Connection
+            </button>
+        </form>
+
     </div>
-
-
-{{/with}}
-
-
-
 </div>
 <!-- /right column -->
 
+{{/with}}
 
 
 
