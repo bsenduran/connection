@@ -49,7 +49,7 @@
                     <form action="{{url ""}}/asts/{{../../type}}/apis/deleteAccount?type=connection&accountId={{this}}&id={{../../id}}&recipeUri={{../../returnRecipeUri}}"
                           id="form-delete" method="post" role="form">
                         <button class="btn btn-danger">
-                            <span class="badge">X</span> Delete
+                            <i class="fa fa-trash-o fa-lg"></i> Delete
                         </button>
                     </form>
                 </a>
@@ -64,7 +64,7 @@
                     <form action="{{url ""}}/asts/{{../../type}}/apis/deleteAccount?type=connection&accountId={{this}}&id={{../../id}}&recipeUri={{../../returnRecipeUri}}"
                           id="form-delete" method="post" role="form">
                         <button class="btn btn-danger">
-                            <span class="badge">X</span> Delete
+                            <i class="fa fa-trash-o fa-lg"></i> Delete
                         </button>
                     </form>
                 </a>
@@ -83,7 +83,7 @@
 
         <form action="{{url ""}}/asts/connection/apis/{{tables.0.fields.authenticationType.value}}?type=connection&id={{id}}&recipeUri={{returnRecipeUri}}&connectionName={{tables.0.fields.name.value}}"   method="post" role="form">
             <button type="submit" class="btn btn-success btn-lg">
-                <span class="badge">+</span> New Connection
+                <i class="fa fa-plus fa-lg"></i> New Connection
             </button>
         </form>
 
