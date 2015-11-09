@@ -11,7 +11,9 @@ var api = {};
         "request_token_url": "https://twitter.com/oauth/request_token",
         "api_key": "V7gCu0rSpzUOlZXNrsaPki4cp",
         "api_secret": "dM2Rzr2LaFzfV4bdW6dQJ2WQernT9E7xHf8hwJ7BUwwRV4NgBV",
-        "callback_url" : serverHost  + ':' + httpsPort + '/publisher/asts/connection/oauth1_success'
+        // When deploying on the cloud we need to use the serverHost variable instead of the localhost because when we use
+        // serverHost variable in the local setups with private ips, twitter redirection do not works as expected
+        "callback_url" : 'https://localhost:' + httpsPort +'/publisher/assets/connection/oauth1_success'
     };
 
     api.getProviderConfig = function () {
@@ -32,7 +34,7 @@ var api = {};
 
     api.getAccessTokenUrl = function () {
         return provider.access_token_url;
-    }
+    };
 
     api.getAccessTokenResults = function () {
         // Get the access token given that verifier.
@@ -50,10 +52,11 @@ var api = {};
 
         var screenName = getScreenName(auth_token.rawResponse);
         log.info('User Info : ' + stringify(screenName));
+        log.info("************************** " + serverHost + " *********** " + httpsPort);
         var authInfo = {"id" : screenName, "data":{"consumerKey" : clientId, "consumerSecret" : clientSecret, "accessToken" : auth_token.token, "accessTokenSecret" : auth_token.secret}};
 
         return authInfo;
-    }
+    };
 
     var getScreenName = function (rawResponse) {
         var tokens = rawResponse.split('&');

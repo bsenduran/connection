@@ -31,7 +31,7 @@ if(request.getMethod() == "POST"){
     var assetId = session.get('assetId');
     var connectionBoxId = session.get('connectionBoxId');
 
-    response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/asts/connection/details/' + assetId + "?id=" + connectionBoxId);
+    response.sendRedirect(serverHost  + ':' + httpsPort + '/publisher/assets/connection/details/' + assetId + "?id=" + connectionBoxId);
 
 }
 }, request, response, session);

@@ -27,7 +27,7 @@ require('/modules/publisher.js').exec(function(ctx){
 
             print('Account was deleted successfully !');
 
-            response.sendRedirect(serverHost  + ':' + httpsPort +'/publisher/asts/connection/details/' + assetId+"?id="+connectionBoxId);
+            response.sendRedirect(serverHost  + ':' + httpsPort +'/publisher/assets/connection/details/' + assetId+"?id="+connectionBoxId);
     }
 }, request, response, session);
 %>

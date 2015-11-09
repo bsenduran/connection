@@ -15,7 +15,7 @@ var api = {};
         var htmlStr = '<br/><br/><div class="center-block col-md-4"></div>' +
                       '<div class="center-block col-md-4">' +
                       '<div class="panel panel-danger">' +
-'                           <form method="post" action="/publisher/asts/connection/basic_success">' +
+'                           <form method="post" action="/publisher/assets/connection/basic_success">' +
 '                               <div class="panel-footer">' +
 '                                   <h3 class="panel-title">Enter Redmine Credentials</h3>' +
 '                               </div>' +

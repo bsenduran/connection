@@ -11,7 +11,7 @@ var api = {};
         "api_key": "212972391932-3thmh0maoodoin7t116vb0adpjjvckv0.apps.googleusercontent.com",
         "api_secret": "PY9hUuKKwxj_D92LbawosUKl",
         "callback_url": serverHost  + ':' + httpsPort +
-                        "/publisher/asts/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
+                        "/publisher/assets/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
         "authorize_params": {
             "state": "wso2recipetrial",
             "scope": "https://mail.google.com/ https://www.googleapis.com/auth/userinfo.email",

@@ -10,8 +10,7 @@ var api = {};
         "access_token_url": "https://accounts.google.com/o/oauth2/token",
         "api_key": "244501108396-k0pan5bk1d3mtsqj3c1o06uentn0knrs.apps.googleusercontent.com",
         "api_secret": "DtyDJj2iMGbJpP3xITpvq9V1",
-        "callback_url": serverHost  + ':' + httpsPort +
-                        "/publisher/asts/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
+        "callback_url": "https://localhost:" + httpsPort + "/publisher/assets/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
         "authorize_params": {
             "state": "wso2recipetrial",
             "scope": "https://mail.google.com/ https://www.googleapis.com/auth/userinfo.email",
@@ -38,7 +37,7 @@ var api = {};
 
     api.getAccessTokenUrl = function () {
         return provider.access_token_url;
-    }
+    };
 
     api.getAccessTokenResults = function () {
 

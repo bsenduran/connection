@@ -12,7 +12,7 @@ var api = {};
         "api_key": "wso2recipe-0482",
         "api_secret": "d29cfacc5c91676f",
         "token_type": "SANDBOX",
-        "callback_url" : serverHost  + ':' + httpsPort + '/publisher/asts/connection/oauth1_success'
+        "callback_url" : serverHost  + ':' + httpsPort + '/publisher/assets/connection/oauth1_success'
     };
 
     api.getProviderConfig = function () {

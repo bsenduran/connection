@@ -8,9 +8,11 @@ var api = {};
         "oauth_version": "2",
         "authorization_url": "https://accounts.google.com/o/oauth2/auth",
         "access_token_url": "https://accounts.google.com/o/oauth2/token",
-        "api_key": "212972391932-3thmh0maoodoin7t116vb0adpjjvckv0.apps.googleusercontent.com",
-        "api_secret": "PY9hUuKKwxj_D92LbawosUKl",
-        "callback_url": serverHost  + ':' + httpsPort + "/publisher/asts/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
+        "api_key": "244501108396-k0pan5bk1d3mtsqj3c1o06uentn0knrs.apps.googleusercontent.com",
+        "api_secret": "DtyDJj2iMGbJpP3xITpvq9V1",
+        // We have to change the callback_url host name depending on whether the cloud or local deployment. This value should be
+        // same as the google developer credentials
+        "callback_url": "https://localhost:9443/publisher/assets/connection/oauth2_success?name=googlespreadsheet&type=oauth&version=2",
         "authorize_params": {
             "state": "wso2recipetrial",
             "scope": "https://www.googleapis.com/auth/drive.readonly https://spreadsheets.google.com/feeds/",
